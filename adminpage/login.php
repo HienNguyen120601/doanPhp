@@ -14,7 +14,7 @@
 
     <div class="loginform">
         <div class="formlogo">
-            <img src="../Img/Logo-Kha-Go-khong-nen-2.png" alt="">
+            <img src="../api/Img/Logo-Kha-Go-khong-nen-2.png" alt="">
         </div>
         <div class="formgroup">
             <label for="email">Your email</label>
