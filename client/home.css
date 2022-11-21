@@ -72,3 +72,19 @@
 .col-sm-8 {
     padding-left: 0 !important;
 }
+/* FOOTER */
+.top-footer{
+    background-color:#d71a21;
+    color: white;
+}
+.footer-title{
+    color: black;
+}
+.btn-success{
+    background-color: #FFD7D7 !important;
+    color: black !important;
+    border: none;
+}
+.row-footer{
+    margin: 0 !important; 
+}
