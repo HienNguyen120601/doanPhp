@@ -16,11 +16,11 @@
   <nav class="navbar navbar-expand-lg my-navbar">
     <h1 class="navbar-brand ml-5" style="fontSize:40px;">
       <Link style=" color:black " to="/">
-      <img src="../assets/Img/Logo-Kha-Go-khong-nen-2.png" style="height:30% ; width:30% " />
+      <img src="../assets/Img/Logo-Kha-Go-khong-nen-2.png" style="height=30% ; width:30% " />
       </Link>
     </h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" />
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,12 +58,13 @@
   </nav>
   <!-- PRODUCT -->
   <?php
-  include '../api/SQL/connect.php';
-  if (isset($pdo)) {
-    $sql = "select * from product";
-    $result = $pdo->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-  }
+  //   include '../api/SQL/connect.php';
+  //   if (isset($pdo)) {
+  //     $sql = "select * from product";
+  //     $result = $pdo->query($sql);
+  //     $row = $result->fetch(PDO::FETCH_ASSOC);
+  //     var_dump($row);
+  //   }
 
 
   $item1 = array();
@@ -98,18 +99,18 @@
             <?php
             foreach ($item1 as $key => $value) {
               echo "<div class='col-sm-4'>
-              <div class='card' style=' width:16rem'>
-                <a>
-                  <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
-                  <div class='card-body'>
-                    <div class='row row_no_margin'>
-                      <div class='col-sm-8'>
-                        <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
-                        <!-- shopping cart -->
-                      </div>
-                    </div>
-                  </div>
-                </div>";
+                            <div class='card' style=' width:16rem'>
+                            <a>
+                    <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
+                            <div class='card-body'>
+                        <div class='row row_no_margin'>
+                                <div class='col-sm-8'>
+                            <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
+                                <!-- shopping cart -->
+                            </div>
+                            </div>
+                            </div>
+                    </div>";
             }
             ?>
 
@@ -119,14 +120,58 @@
           <div class="row container product-item">
             <?php
             foreach ($item1 as $key => $value) {
+              echo "<div class='col-sm-4'>
+                            <div class='card' style=' width:16rem'>
+                            <a>
+                    <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
+                            <div class='card-body'>
+                        <div class='row row_no_margin'>
+                                <div class='col-sm-8'>
+                            <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
+                                <!-- shopping cart -->
+                            </div>
+                            </div>
+                            </div>
+                    </div>";
+            }
+            ?>
+
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="row container product-item">
+            <?php
+            foreach ($item1 as $key => $value) {
+              echo "<div class='col-sm-4'>
+                        <div class='card' style=' width:16rem'>
+                          <a>
+                  <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
+                          <div class='card-body'>
+                    <div class='row row_no_margin'>
+                            <div class='col-sm-8'>
+                        <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
+                              <!-- shopping cart -->
+                           </div>
+                          </div>
+                        </div>
+                </div>";
+            }
+            ?>
+          </div>
+
+        </div>
+        <<<<<<< HEAD <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="row container product-item">
+            <?php
+            foreach ($item1 as $key => $value) {
               echo "
               <div class='col-sm-4'>
               <div class='card' style=' width:16rem'>
                 <a>
                   <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
-                  <div class='card-body'>
+                          <div class='card-body'>
                     <div class='row row_no_margin'>
-                      <div class='col-sm-8'>
+                            <div class='col-sm-8'>
                         <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
                         <!-- shopping cart -->
                       </div>
@@ -136,21 +181,49 @@
                 ";
             }
             ?>
-          </div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <div class="row container product-item">
 
+          </div>
+
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row container product-item">
+
+        </div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+          <div class="row container product-item">
+
+            =======
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+              <div class="row container product-item">
+                <?php
+                foreach ($item1 as $key => $value) {
+                  echo "<div class='col-sm-4'>
+                        <div class='card' style=' width:16rem'>
+                          <a>
+                  <img height='250px' style='objectFit:cover' src=", $value["img"], " ", "class='card-img-top' alt='...' />", "</a>
+                          <div class='card-body'>
+                    <div class='row row_no_margin'>
+                            <div class='col-sm-8'>
+                        <h3>", $value["name"], "</h3><p>", $value["price"], "</p></div>
+                              <!-- shopping cart -->
+                           </div>
+                          </div>
+                        </div>
+                </div>";
+                }
+                ?>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- bs4 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+  </div>
+  </div>
+  <!-- bs4 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </body>
 
 </html>
