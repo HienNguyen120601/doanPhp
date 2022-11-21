@@ -16,11 +16,11 @@
   <nav class="navbar navbar-expand-lg my-navbar">
     <h1 class="navbar-brand ml-5" style="fontSize:40px;">
       <Link style=" color:black " to="/">
-      <img src="../assets/Img/Logo-Kha-Go-khong-nen-2.png" style="height=30% ; width:30% " />
+      <img src="../assets/Img/Logo-Kha-Go-khong-nen-2.png" style="height:30% ; width:30% " />
       </Link>
     </h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
