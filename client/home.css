@@ -1,0 +1,54 @@
+.my-navbar{
+    background-color: #d71a21;
+}
+.my-navbar-active{
+    background-color: rgba(189, 56, 56, 0.649);
+    position: fixed !important;
+    width: 100%;
+    z-index: 1;
+    scroll-behavior: smooth;
+}
+#my-item .nav-item a{
+    color: white;
+    margin-right: 50px;
+}
+.navbar{
+    padding: 0 !important;
+}
+.my-dropdown{
+    position: absolute !important;
+    transform: translate3d(-226px, 30px , 0px) !important;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+}
+.my-dropdown a{
+    color: black !important;
+}
+/* PRODUCT */
+.product{
+    background-color: #130101;
+}
+.nav-item a{
+    color: white !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #d71a21 !important;
+}
+.product-item{
+    margin: auto !important;
+
+}
+.col-sm-4{
+    padding: 10px 0 !important;
+}
+.card{
+    background-color: transparent !important;
+}
+.card-body{
+    color: white;
+    padding: 10px 0 !important;
+}
+.col-sm-8{
+    padding-left: 0 !important;
+}
