@@ -15,7 +15,7 @@
     session_start();
     include '../SQL/connect.php';
     if (isset($pdo)) {
-        $sql = "select * from user";
+        $sql = "select * from product";
         $result = $pdo->query($sql);
         $row = $result->fetch(PDO::FETCH_ASSOC);
         var_dump($row);
