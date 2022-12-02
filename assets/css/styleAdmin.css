@@ -7,6 +7,7 @@ a {
 }
 
 .header {
+    position        : relative;
     width           : 100%;
     height          : 85px;
     background-color: var(--background-color);
@@ -19,12 +20,17 @@ a {
 }
 
 .header__logo {
-    width : 30%;
-    cursor: pointer;
+    position       : relative;
+    width          : 30%;
+    height         : 85px;
+    display        : flex;
+    justify-content: center;
+    cursor         : pointer;
 }
 
 .header__logo>a>img {
-    width     : 100%;
+    height    : 100%;
+    width     : 100px;
     object-fit: cover;
 }
 
@@ -171,8 +177,7 @@ a {
 
 .product__label {
 
-    flex       : 0 0 16.6666%;
-    max-width  : 16.6666%;
+
     border     : 1px solid black;
     text-align : center;
     font-weight: 600;
@@ -181,12 +186,47 @@ a {
 }
 
 .product__label:nth-child(1) {
+    flex: 0 0 16.6666%;
+
+    max-width: 16.6666%;
+}
+
+.product__label:nth-child(2) {
     max-width: 8.3333%;
+    flex     : 0 0 8.3333%;
+
+}
+
+.product__label:nth-child(3) {
+    max-width: 8.3333%;
+    flex     : 0 0 8.3333%;
+
+}
+
+.product__label:nth-child(4) {
+    max-width: 41.7770%;
+    flex     : 0 0 41.7777%;
+
+}
+
+.product__label:nth-child(5) {
+    max-width: 8.3333%;
+    flex     : 0 0 8.3333%;
+
+}
+
+.product__label:nth-child(6) {
+    max-width: 8.3333%;
+    flex     : 0 0 8.3333%;
+
 }
 
 .product__label:nth-child(7) {
     max-width: 8.3333%;
+    flex     : 0 0 8.3333%;
+
 }
+
 
 .content__list {
     width: 100%;
@@ -203,14 +243,13 @@ a {
 .product__content {
     display    : block;
     line-height: 30px;
-    flex       : 0 0 16.6666%;
-    max-width  : 16.6666%;
-    border     : 1px solid black;
-    padding    : 0 5px;
+
+    border : 1px solid black;
+    padding: 0 5px;
 
 }
 
-.product__content:hover {
+.product__content>span:hover {
     color      : red;
     white-space: unset;
 }
@@ -218,41 +257,57 @@ a {
 
 
 .product__item>span:nth-child(1) {
-    max-width: 8.3333%;
-}
-
-
-.product__item>span:nth-child(2) {
+    flex         : 0 0 16.6666%;
     max-width    : 16.6666%;
     overflow     : hidden;
     text-overflow: ellipsis;
     white-space  : nowrap;
 }
 
-.product__item>span:nth-child(2):hover {
-    white-space: unset;
+
+.product__item>span:nth-child(2) {
+    max-width    : 8.3333%;
+    flex         : 0 0 8.3333%;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
 }
 
+
+
 .product__item>span:nth-child(3) {
-    max-width      : 16.6666%;
+    max-width      : 8.3333%;
+    flex           : 0 0 8.3333%;
     overflow       : hidden;
     text-overflow  : ellipsis;
     white-space    : nowrap;
     display        : flex;
     justify-content: center;
+    align-items    : center;
+    cursor         : pointer;
+
 }
 
 .product__item>span:nth-child(4) {
-    max-width      : 16.6666%;
-    overflow       : hidden;
-    text-overflow  : ellipsis;
-    white-space    : nowrap;
-    display        : flex;
-    justify-content: center;
+    max-width    : 41.7777%;
+    flex         : 0 0 41.7777%;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+
 }
 
 .product__item>span:nth-child(5) {
-    max-width    : 16.6666%;
+    max-width    : 8.3333%;
+    flex         : 0 0 8.3333%;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+}
+
+.product__item>span:nth-child(6) {
+    max-width    : 8.3333%;
+    flex         : 0 0 8.3333%;
     overflow     : hidden;
     text-overflow: ellipsis;
     white-space  : nowrap;
@@ -264,16 +319,14 @@ a {
 
 .product__item>span:nth-child(7) {
     max-width      : 8.3333%;
+    flex           : 8.3333%;
     display        : flex;
     justify-content: space-around;
     line-height    : 30px;
     align-items    : center;
 }
 
-.product__item>span:nth-child(7)>i:hover {
-    color : rgb(14, 193, 14);
-    cursor: pointer;
-}
+
 
 
 .customer__label {
@@ -575,4 +628,54 @@ a {
     overflow        : hidden;
     text-overflow   : ellipsis;
     white-space     : nowrap;
+}
+
+.img__preview {
+    position : absolute;
+    z-index  : 2;
+    width    : 100%;
+    height   : 100%;
+    display  : none;
+    animation: showImg 0.8s ease 1;
+
+}
+
+.preview__overlay {
+    width   : 100%;
+    height  : 100%;
+    position: fixed;
+    z-index : 3;
+
+}
+
+.preview__content {
+    position       : absolute;
+    z-index        : 2;
+    width          : 100%;
+    height         : 100%;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.preview__content>img {
+    position     : absolute;
+    z-index      : 4;
+    display      : block;
+    border-radius: 10px;
+    object-fit   : cover;
+    width        : 500px;
+    height       : 500px;
+}
+
+@keyframes showImg {
+    from {
+        opacity  : 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity  : 1;
+        transform: scale(1);
+    }
 }

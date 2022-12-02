@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="shortcut icon" href="../asserts/img/favicon-32x32.png" type="image/x-icon"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../assets/css/styleAdmin.css">
+    <link rel="stylesheet" href="../assets/css/styleAdmin.css">
 
-    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
     <title>Admin</title>
 </head>
 
@@ -18,23 +19,51 @@
 <body>
     <!-- Header -->
     <?php
+    include '../SQL/connect.php';
     session_start();
     if (!isset($_SESSION['isLoginAdmin'])) {
         header('location:' . 'index.php');
     }
-
+    if (isset($pdo)) {
+        $sql = "select * from product";
+        $pdo->query("set names 'utf8'");
+        $result = $pdo->prepare($sql);
+        $result->execute();
+        $item = array();
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $item[] = $row;
+        }
+        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //     $name = $_POST['Name'];
+        //     $price = $_POST['Price'];
+        //     $img = $_POST['Image'];
+        //     $count = $_POST['Count'];
+        //     $detail = $_POST['Detail'];
+        //     $type = $_POST['Type'];
+        //     $sqlInsert = "insert into product(name,price,img,count,detail,type)" . "values('$name','$price','$img','$count','$detail','$type')";
+        //     $result = $pdo->query($sqlInsert);
+        //     $result->execute();
+        // }
+        //$row = $result->fetch(PDO::FETCH_ASSOC);
+    }
     ?>
+    <div class="img__preview">
+        <div class="preview__overlay">
+        </div>
+        <div class="preview__content">
+        </div>
+    </div>
     <div class="header">
         <div class="header__logo">
-            <a href="../index.html">
-                <img src="../asserts/img/logo3.png" alt="">
+            <a href="../client/homepage/index.php">
+                <img src="../assets/Img/Logo-Kha-Go-khong-nen-2.png" alt="">
             </a>
 
         </div>
         <ul class="navbar__list">
             <li class="navbar__item">
                 <i class="fa-solid fa-share"></i>
-                <a href="../index.html">Vào trang web</a>
+                <a href="../client/homepage/index.php">Vào trang web</a>
             </li>
             <li class="navbar__item">
                 <span>Liên hệ</span>
@@ -112,19 +141,47 @@
                 <span id='product'>Sản phẩm</span>
             </div>
             <div class="content__service">
-                <!-- <div class="service__search">
-                    <input type="text" placeholder="Nhập tên tour" class="service__input">
-                    <i class="fa-solid fa-magnifying-glass" onclick="search();"></i>
+                <div class="service__search">
+                    <input type="text" placeholder="Nhập tên sản phẩm" class="service__input">
+                    <i class="fa-solid fa-magnifying-glass" onclick="searchTour();"></i>
                 </div>
 
-                <button class="service__addtour">Thêm mới</button> -->
+                <button onclick="showAddForm();" class="service__addtour">Thêm mới</button>
 
             </div>
             <div class="content__product">
+                <span class="product__label">Name</span>
+                <span class="product__label">Price</span>
+                <span class="product__label">Img</span>
+                <span class="product__label">Detail</span>
+                <span class="product__label">Count</span>
+                <span class="product__label">Type</span>
+                <span class="product__label">Service</span>
 
             </div>
             <div class="content__list">
-
+                <?php
+                foreach ($item as $key => $value) {
+                    $json = json_encode($value);
+                    echo "<div class='product__item'>
+                                     <span class='product__content'>", $value['name'], "</span>
+                                     <span class='product__content'>", $value['price'], "</span>
+                                     <span class='product__content' img-src='", $value['img'], "' onclick='previewImg(this)'><i class='fa-solid fa-eye'></i></span>
+                                     <span class='product__content'>", $value['detail'], "</span>
+                                     <span class='product__content'>", $value['count'], "</span>
+                                     <span class='product__content'>", $value['type'], "</span>
+                                     <span class='product__content'>
+                                     <a href='./delete.php?id=", $value["id"], "' >
+                                     <i onclick='deleteTour(this);' style='color:black;cursor:pointer;'
+                                     class='fa-solid fa-circle-xmark' data-id=", $value['id'], "></i>              
+                                     </a>
+                                    
+                                     <i onclick='showUpdateForm($json)'  style='color:black;cursor:pointer;' class='fa-solid fa-pen' data-id=", $value['id'], "></i>
+                                    
+                                     </span>
+                                 </div>";
+                }
+                ?>
             </div>
             <!-- <div class="order__detail">
                 <div class="order__detail__lab">
@@ -155,31 +212,35 @@
                 <div class="auth-form">
                     <div class="auth-form_container">
 
-                        <div class="auth-form_form">
+                        <form method="POST" action="create.php" class="auth-form_form">
                             <div class="auth-form_group">
-                                <label for="">Title</label>
-                                <input type="text" class="auth-form_input title" placeholder="Ex: Title">
+                                <label for="">Name</label>
+                                <input type="text" class="auth-form_input title" name="Name" placeholder="Ex: Name">
                             </div>
                             <div class="auth-form_group">
                                 <label for="">Price</label>
-                                <input type="text" class="auth-form_input price" placeholder="Ex: $30.00">
+                                <input type="number" class="auth-form_input price" name="Price" placeholder="Ex: 30000">
                             </div>
                             <div class="auth-form_group">
-                                <label for="">Day of number</label>
-                                <input type="text" class="auth-form_input dayofnumber" placeholder="Ex: 2 Day & 3 Night">
+                                <label for="">Detail</label>
+                                <input type="text" class="auth-form_input dayofnumber" name="Detail" placeholder="Ex: Detail">
                             </div>
                             <div class="auth-form_group">
-                                <label for="">Description</label>
-                                <input type="text" class="auth-form_input description" placeholder="Ex: Description">
+                                <label for="">Count</label>
+                                <input type="number" class="auth-form_input description" name="Count" placeholder="Ex: 10">
+                            </div>
+                            <div class="auth-form_group">
+                                <label for="">Type</label>
+                                <input type="text" class="auth-form_input description" name="Type" placeholder="Ex: Arrival">
                             </div>
                             <div class="auth-form_group">
                                 <label for="">Image</label>
-                                <input type="file" class="auth-form_input img">
+                                <input type="file" name="Image" class="auth-form_input img">
                             </div>
-                            <div class="auth-form_group">
-                                <button class="btnSubmit" onclick="addTour();">Submit</button>
-                            </div>
-                        </div>
+
+                            <button class="btnSubmit" type="submit" name="submit">Submit</button>
+
+                        </form>
                     </div>
                 </div>
 
@@ -194,38 +255,45 @@
                 <div class="auth-form">
                     <div class="auth-form_container">
 
-                        <div class="auth-form_form">
+                        <form method="POST" action="update.php" class="auth-form_form">
+                            <?php
+
+                            ?>
+                            <input type="hidden" class="auth-form_input id" name="Id">
                             <div class="auth-form_group">
-                                <label for="">Title</label>
-                                <input type="text" class="auth-form_input title" placeholder="Ex: Title">
+                                <label for="">Name</label>
+                                <input type="text" class="auth-form_input name" name="Name" placeholder="Ex: Name">
                             </div>
                             <div class="auth-form_group">
                                 <label for="">Price</label>
-                                <input type="text" class="auth-form_input price" placeholder="Ex: $30.00">
+                                <input type="number" class="auth-form_input price" name="Price" placeholder="Ex: 30000">
                             </div>
                             <div class="auth-form_group">
-                                <label for="">Day of number</label>
-                                <input type="text" class="auth-form_input dayofnumber" placeholder="Ex: 2 Day & 3 Night">
+                                <label for="">Detail</label>
+                                <input type="text" class="auth-form_input detail" name="Detail" placeholder="Ex: Detail">
                             </div>
                             <div class="auth-form_group">
-                                <label for="">Description</label>
-                                <input type="text" class="auth-form_input description" placeholder="Ex: Description">
+                                <label for="">Count</label>
+                                <input type="number" class="auth-form_input count" name="Count" placeholder="Ex: 10">
+                            </div>
+                            <div class="auth-form_group">
+                                <label for="">Type</label>
+                                <input type="text" class="auth-form_input type" name="Type" placeholder="Ex: Arrival">
                             </div>
                             <div class="auth-form_group">
                                 <label for="">Image</label>
-                                <input type="file" class="auth-form_input img">
+                                <input type="file" name="Image" class="auth-form_input img">
                             </div>
-                            <div class="auth-form_group">
 
-                                <button class="btnSubmit" onclick="updateTour();">Submit</button>
-                            </div>
-                        </div>
+                            <button class="btnSubmit" type="submit" name="submit">Submit</button>
+
+                        </form>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!-- <script src="../../assets/js/admin.js"></script> -->
+        <script src="../assets/js/admin.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

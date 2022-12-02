@@ -1,0 +1,202 @@
+/* NAVBAR */
+.my-navbar {
+    background-color: #d71a21;
+}
+
+.my-navbar-active {
+    background-color: rgba(189, 56, 56, 0.649);
+    position        : fixed !important;
+    width           : 100%;
+    z-index         : 1;
+    scroll-behavior : smooth;
+}
+
+#my-item .nav-item a {
+    color       : white;
+    margin-right: 50px;
+}
+
+
+
+.navbar {
+    padding: 0 !important;
+}
+
+.my-dropdown {
+    position : absolute !important;
+    transform: translate3d(-226px, 30px, 0px) !important;
+    top      : 0;
+    height   : 100vh;
+    width    : 300px;
+}
+
+.my-dropdown a {
+    color: black !important;
+}
+
+.my-cart {
+    color     : white;
+    margin-top: 6px;
+}
+
+/* PRODUCT */
+.title {
+    text-align: center;
+    color     : white;
+}
+
+.product {
+    background-color: #130101;
+}
+
+.row_no_margin {
+    margin-left: 0 !important;
+}
+
+.nav-item a {
+    color: white !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #d71a21 !important;
+}
+
+.product-item {
+    margin: auto !important;
+
+}
+
+.col-sm-4 {
+    padding: 10px 0 !important;
+}
+
+.card {
+    background-color: transparent !important;
+}
+
+.card-body {
+    color  : white;
+    padding: 10px 0 !important;
+}
+
+.col-sm-8 {
+    padding-left: 0 !important;
+}
+
+/* FOOTER */
+.top-footer {
+    background-color: #d71a21;
+    color           : white;
+}
+
+.footer-title {
+    color: black;
+}
+
+.btn-success {
+    background-color: #FFD7D7 !important;
+    color           : black !important;
+    border          : none;
+    margin-bottom   : 3px !important;
+    height          : 30px !important;
+    line-height     : 16px !important;
+    text-align      : center !important;
+}
+
+.row-footer {
+    margin: 0 !important;
+}
+
+/* CART */
+.cart-modal {
+    position        : absolute;
+    top             : 100%;
+    right           : 0;
+    height          : calc(100vh- 9.5rem);
+    background-color: white;
+    padding         : 0 1.5rem;
+}
+
+.cart-modal .cart-active {
+    right: 0;
+}
+
+.cart-item {
+    margin: 2rem 0;
+    gap   : 1.5rem;
+}
+
+.hideCart {
+    display: none;
+}
+
+.row .cart-plus {
+    line-height     : 40px;
+    color           : white !important;
+    text-decoration : none;
+    margin-left     : 20px;
+    background-color: transparent !important;
+}
+
+.cart-modal::-webkit-scrollbar {
+    display: none;
+}
+
+.loginform {
+    position: absolute;
+    z-index : 100;
+}
+
+.cart-modal {
+    height            : 500px;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+
+
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.logout-modal {
+    position   : absolute;
+    z-index    : 1001;
+    cursor     : pointer;
+    font-weight: 600;
+    color      : white;
+    right      : 130px;
+
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700 !important;
+}
+
+.nav-item {
+    /* display         : flex !important;
+    align-items     : center !important;
+    justify-content : center !important; */
+    width           : 120px !important;
+    background-color: rgba(215, 26, 33, 0.3) !important;
+    border-radius   : 5px !important;
+}
+
+.nav-link {
+    text-align: center !important;
+}
+
+.nav-item a {
+    color      : black !important;
+    font-weight: 600 !important;
+}
